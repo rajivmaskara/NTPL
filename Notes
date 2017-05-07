@@ -1,0 +1,25 @@
+order:
+order_number : string
+customer_id : integer
+order_date : date
+order_total : float
+
+order_product:
+order_id : integer
+product_id : integer
+quantity : integer
+price : float
+
+product:
+product_name : string
+size : string
+availability : boolean
+stock : integer
+
+customer:
+customer_name : string
+phone_no : integer
+location : string
+
+
+
