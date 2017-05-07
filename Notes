@@ -10,11 +10,21 @@ product_id : integer
 quantity : integer
 price : float
 
+order_rate:
+order_id : integer
+category_id : integer
+rate: float
+
 product:
-product_name : string
+#product_name : string
+category_id : integer
 size : string
 availability : boolean
 stock : integer
+
+category
+name : string
+
 
 customer:
 customer_name : string

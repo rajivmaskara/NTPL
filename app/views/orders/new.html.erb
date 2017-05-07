@@ -1,0 +1,6 @@
+<%= form_for @order do |f| %>
+	
+	<%= f.label :Customer %><br/>
+	<%= f.collection_select :customer_id, Customer.all, :id, :customer_name, prompt: "Select Customer" %><br/>
+	
+<%end%>
