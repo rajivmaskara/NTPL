@@ -1,0 +1,32 @@
+<h2> All Categories </h2>
+
+	<% if @categories.empty? %>
+	<p>You do not have any Categories, Create your first product category"</p>  <%= link_to "New Product Category", new_category_path %>
+
+
+	<%else%>
+		<table border = "1">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Product Category</th>
+					<th>Delete Category</th>
+				</tr>
+		
+			</thead>
+			
+			<tbody>
+				<% @categories.each_with_index do |category,index| %>
+				<tr>
+					<td> <%= index + 1 %> </td>
+					<td> <%= category.name %> </td>
+					<td> <%=link_to "remove", category, method: :delete, data: {confirm: "Are You Sure"} %> </td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<br/>
+		
+	<%end%>
+
+	<!--link_to("Show All Orders", )-->

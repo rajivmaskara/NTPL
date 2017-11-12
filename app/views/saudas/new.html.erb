@@ -1,0 +1,28 @@
+<%= form_for @sauda do |f| %>
+	
+	<%= f.label :Customer %><br/>
+	<%= f.collection_select :customer_id, Customer.all, :id, :customer_name, prompt: "Select Customer" %><br/>
+
+
+	Products:
+	
+	<%= f.fields_for :sauda_line_items do |sauda_line_item|%>
+		
+		
+			<%= sauda_line_item.label :ProductCategory %><br/>
+			<%= sauda_line_item.collection_select :category_id, Category.all, :id, :name, prompt: "Select Category" %><br/>
+		
+			<%= sauda_line_item.label :Quantity %> <br/>
+			<%= sauda_line_item.number_field :quantity %> <br/>
+		
+			<%= sauda_line_item.label :Rate %> <br/>
+			<%= sauda_line_item.number_field :rate %> <br/>
+		
+
+	<%end%>
+
+	
+	
+	<%= f.submit %>
+
+<%end%>

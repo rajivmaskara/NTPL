@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507184508) do
+ActiveRecord::Schema.define(version: 20171112113746) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -60,6 +60,25 @@ ActiveRecord::Schema.define(version: 20170507184508) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
+  end
+
+  create_table "sauda_line_items", force: true do |t|
+    t.integer  "category_id"
+    t.float    "rate"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "sauda_id"
+  end
+
+  create_table "saudas", force: true do |t|
+    t.string   "sauda_number"
+    t.date     "sauda_date"
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "is_order_taken", default: false
+    t.boolean  "is_delivered",   default: false
   end
 
 end

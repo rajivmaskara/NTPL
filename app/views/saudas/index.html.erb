@@ -1,0 +1,39 @@
+<h2> All Saudas </h2>
+
+	<% if @saudas.empty? %>
+	<p>You do not have any saudas, Create your first sauda"</p>  <%= link_to "New Sauda", new_sauda_path %>
+
+
+	<%else%>
+		<table border = "1">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Sauda_Number</th>
+					<th>Customer_Name</th>
+					<th>Location</th>
+					<th>OrderTaken</th>
+					<th>OrderDelivered</th>
+				</tr>
+		
+			</thead>
+			
+			<tbody>
+				<% @saudas.each_with_index do |sauda,index| %>
+				<tr>
+					<td> <%= index + 1 %> </td>
+					<td> <%= link_to(sauda.sauda_number, sauda_path(sauda)) %></td>
+					<td> <%= sauda.customer.customer_name %></td>
+					<td> <%= sauda.customer.location %></td>
+					<td> <%= if sauda.is_order_taken == false  then "Take Order" else "Yes" end%></td>
+					<td> <%= if sauda.is_delivered == false  then "Delivery Details" else "Delivered" end%></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<br/>
+		
+	<%end%>
+
+	<!--link_to("Show All Orders", )-->
+

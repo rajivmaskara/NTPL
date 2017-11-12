@@ -7,6 +7,14 @@ Rails.application.routes.draw do
 
    resources :orders
 
+   resources :customers
+
+   resources :categories
+
+   resources :saudas
+
+   resources :sauda_line_items
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
