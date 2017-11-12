@@ -1,0 +1,12 @@
+ <b>Add Product Size</b>
+
+<%= form_for @product do |f| %>
+	
+	<%= f.label :ProductCategory %><br/>
+	<%= f.collection_select :category_id, Category.all, :id, :name, prompt: "Select Category" %><br/>
+		
+	<%= f.label :ProductSize %><br/>
+	<%= f.text_field :size %><br/>
+	
+	<%= f.submit %>
+<%end%>

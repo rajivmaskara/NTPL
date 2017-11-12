@@ -1,3 +1,27 @@
-<H2> Thank You for adding Categories </H2>
+<H2> Product Category and Sizes </H2>
 
 <p> Product Category Name : <%= @category.name %></p>
+
+
+
+	<table border = "1">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Category</th>
+				<th>Size</th>
+			</tr>
+		
+		</thead>
+
+		<tbody>
+		<% Product.where(category_id: @category.id).each_with_index do |product,index| %>
+ 			<tr>
+				<td> <%= index + 1 %> </td>
+				<td> <%= product.category.name%> </td>
+				<td> <%= product.size %> </td>
+			</tr>
+		
+		</tbody>
+<%end%>
+

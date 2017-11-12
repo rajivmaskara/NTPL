@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
    resources :sauda_line_items
 
+   resources :products
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
