@@ -6,15 +6,26 @@ class SaudasController < ApplicationController
 
 	def new
 		@sauda = Sauda.new
-		#binding.pry
+		
+		#This is to allow nested parameters forms from within the Sauda Form
+		#So this allows sauda
 		Category.count.times {@sauda.sauda_line_items.build}
 		#binding.pry
 	end
 
 	def create
-		binding.pry
+		
+		#Not all ProductCategories will have a Sauda, hence some will be left blank 
+      	#This will ensure that all those blank values do not get udated in the Database
+      	params[:sauda][:sauda_line_items_attributes].each do |layer_number, subparams|
+  			if(subparams[:category_id] == "")
+  				params[:sauda][:sauda_line_items_attributes].delete(layer_number)
+  			end
+  		end
+      	
+      	#binding.pry
 		@sauda = Sauda.new(sauda_params)
-		binding.pry
+		#binding.pry
 		if(@sauda.save)
 			redirect_to sauda_path(@sauda), notice: "Successfully added Sauda"
 		end

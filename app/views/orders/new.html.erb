@@ -1,8 +1,32 @@
 <%= link_to "Add Customer", new_customer_path %> | <%= link_to "Add Product Category", new_category_path %>
 
-<%= form_for @order do |f| %>
+<%= form_for [@sauda, @order] do |f| %>
 	
 	<%= f.label :Customer %><br/>
-	<%= f.collection_select :customer_id, Customer.all, :id, :customer_name, prompt: "Select Customer" %><br/>
+	<%= @sauda.customer.customer_name %><br/>
+
+	<% hidden_field :customer_id, @sauda.customer_id %>
+
+	<%= f.label :SaudaDate %><br/>
+	<%= @sauda.sauda_date %><br/>
 	
+	<% @sauda.sauda_line_items.each do |item|%>
+		<%= item.category.name%>
+		<%= item.rate%>
+		<%= item.quantity%>
+
+		<% item.category.products.each do |product| %>
+
+			<%= f.fields_for :order_products do |order_product|%>
+				<%= order_product.label :size %>
+				<%= order_product.collection_select  :product_id, item.category.products, :id, :size, prompt: "Select Product" %><br/>
+				<%= order_product.label :quantity %>
+				<%= order_product.number_field :order_quantity %> <br/>
+			<%end%>
+
+		<%end%>		
+
+	<%end%>	
+
+	<%= f.submit %>
 <%end%>

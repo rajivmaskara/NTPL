@@ -3,15 +3,21 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'orders#index'
+   root 'saudas#index'
 
-   resources :orders
+   #nested routes for sauda --> orders
+   resources :saudas do
+    resources :orders
+  end
+ 
 
    resources :customers
 
    resources :categories
 
-   resources :saudas
+   
+
+ 
 
    resources :sauda_line_items
 

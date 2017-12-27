@@ -25,7 +25,8 @@
 					<td> <%= link_to(sauda.sauda_number, sauda_path(sauda)) %></td>
 					<td> <%= sauda.customer.customer_name %></td>
 					<td> <%= sauda.customer.location %></td>
-					<td> <%= if sauda.is_order_taken == false  then "Take Order" else "Yes" end%></td>
+					<td> <%= if sauda.is_order_taken == false  then link_to "Take Order", new_sauda_order_path(sauda) else "Yes" end%> 
+					</td>
 					<td> <%= if sauda.is_delivered == false  then "Delivery Details" else "Delivered" end%></td>
 				</tr>
 				<% end %>

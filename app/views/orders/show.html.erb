@@ -1,14 +1,37 @@
-<H2> Thank You for placing Order </H2>
-
-<p> Your Order Number : <%= @order.order_number %></p>
-<p> Your Order Date : <%= @order.order_date.strftime("%d %B %Y") %></p>
+<H2> Order Placed </H2>
+<p> Sauda Number : <%= @order.sauda[:sauda_number] %></p>
+<p> Sauda Date : <%= @order.sauda[:sauda_date].strftime("%d %B %Y") %></p>
+<p> Order Number : <%= @order.order_number %></p>
+<p> Order Date : <%= @order.order_date.strftime("%d %B %Y") %></p>
 <!--<p> Your Order Date : <%= @order.order_date %></p>-->
  	<H2> Your Orders</H2>
- 	<% @order.order_products.each_with_index do |line_item,index| %>
+ 	<table border = "1">
+ 	
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Product</th>
+				<th>Size</th>
+				<th>Quantity</th>
+				<th>Price</th>
+			</tr>
+		
+		</thead>
+		<tbody>
+		<% @order.order_products.each_with_index do |line_item,index| %>
+		
 			<tr>
 				<td> <%= index + 1 %> </td>
-				<td> <%= link_to line_item.product.name, product_path(line_item.product)%> </td>
-				<td> <%= line_item.product.price %> </td>
-				<td> <%= line_item.product.price * line_item.quantity %></td>
+
+				<td> <%= line_item.product.category[:name] %> </td>
+				<td> <%= line_item.product[:size] %> </td>
+				<td> <%= line_item.order_quantity %> </td>
+				<td> <%= line_item.price %> </td>
+
 			</tr>
-	<%end %>
+		<%end %>
+
+		</tbody>
+	</table>
+
+	<H3> Total Order Value = <%= @order[:total] %></H3>
